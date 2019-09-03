@@ -33,6 +33,7 @@ const NumberEntry = ({ onSubmitNumber, theme }) => {
             min="1"
             max="200"
             value={value}
+            onKeyDown={e => {if (e.key === "Enter") onSubmitNumber(value)}}
             onChange={e => setValue(coerceRange(e.target.value))}
           />
         </label>
