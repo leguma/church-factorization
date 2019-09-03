@@ -2,7 +2,6 @@ node_modules
 npm-debug.log
 !.*
 .DS_Store
-public/*
 !public/index.html
 !public/testDynamicContent.html
 NOTES.md
