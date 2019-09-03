@@ -7,3 +7,7 @@ export function updateTutorialViewed(tutorialViewed) {
 export function updateTutorialStep(tutorialStep) {
   return { type: actionTypes.UPDATE_TUTORIAL_STEP, tutorialStep };
 }
+
+export function updateNumber(number) {
+  return { type: actionTypes.UPDATE_NUMBER, number };
+}

@@ -6,7 +6,7 @@ import {
   updateTutorialViewed,
   updateTutorialStep
 } from "../actions/appActions";
-
+import { tutorialContent } from "../constants";
 import LogoSpinner from "../components/LogoSpinner";
 
 const Tutorial = ({
@@ -15,13 +15,35 @@ const Tutorial = ({
   onSkipTutorial,
   onStepNavigation
 }) => {
-  if (tutorialViewed) return <Redirect to="/" />;
+  if (tutorialViewed || step > tutorialContent.length)
+    return <Redirect to="/" />;
+  if (step === 0)
+    return (
+      <>
+        <LogoSpinner />
+        <p>Welcome! Would you like to view the tutorial?</p>
+
+        <button onClick={() => onSkipTutorial(true)}>Skip</button>
+        <button onClick={() => onStepNavigation(step + 1)}>Yes</button>
+      </>
+    );
+
+  const content = tutorialContent[step - 1];
   return (
     <>
-      <LogoSpinner />
-      <p>Welcome! Would you like to view the tutorial? Step {step}</p>
-      <button onClick={() => onStepNavigation(step + 1)}>Yes</button>
-      <button onClick={() => onSkipTutorial(true)}>Skip</button>
+      <h3>{content.header}</h3>
+      <div>
+        {content.paragraphs.map(paragraph => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+      </div>
+
+      <button onClick={() => onStepNavigation(step - 1)}>Previous</button>
+      {step === tutorialContent.length ? (
+        <button onClick={() => onSkipTutorial(true)}>Done</button>
+      ) : (
+        <button onClick={() => onStepNavigation(step + 1)}>Next</button>
+      )}
     </>
   );
 };

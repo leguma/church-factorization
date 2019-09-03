@@ -6,11 +6,12 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import configureStore from "./store/configureStore";
 
-import themeNames from './theme/theme-names';
+import themeNames from "./theme/theme-names";
 import Theme from "./theme/Theme";
 import Home from "./containers/Home";
 import Tutorial from "./containers/Tutorial";
 import NotFound from "./components/NotFound";
+import ChurchFactors from "./containers/ChurchFactors";
 
 const history = createHistory({ basename: process.env.REACT_APP_ROOT_URL });
 const { persistor, store } = configureStore();
@@ -27,6 +28,7 @@ export default () => (
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/tutorial" component={Tutorial} />
+            <Route exact path="/churchFactors" component={ChurchFactors} />
             <Route component={NotFound} />
           </Switch>
         </Router>

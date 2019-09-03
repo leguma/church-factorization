@@ -10,14 +10,21 @@ export default tokens => ({
   color: tokens.colors.primary.text,
   height: "100vh",
   boxSizing: "border-box",
-  padding: "1rem",
-  div: {
+  padding: "2vh",
+  "&:first-child>div": {
     textAlign: "center",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: tokens.colors.tertiary.background,
     padding: "1rem",
     borderRadius: "1rem",
+    maxHeight: "89vh",
+    overflowY: "scroll",
+    scrollbarWidth: "none",
+    "&::-webkit-scrollbar": {
+      width: 0,
+      height: 0
+    },
     a: {
       color: tokens.colors.primary.textLink,
       textDecoration: "underline"
